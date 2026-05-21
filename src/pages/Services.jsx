@@ -2,27 +2,33 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ServiceCard from "../components/ServiceCard";
 
+/* Import Images */
+import polyNails from "../assets/lunka/poly nails.jpeg";
+import luxuryMakeup from "../assets/lunka/luxury makeup.jpeg";
+import massage from "../assets/lunka/massage.jpeg";
+
 function Services() {
 
   const services = [
     {
       title: "Polygel Nails",
-      image: "/src/assets/Polygel Nails.jpg",
+      image: polyNails,
       price: "R300"
     },
     {
       title: "Luxury Makeup",
-      image: "/src/assets/Luxury Makeup.webp",
+      image: luxuryMakeup,
       price: "R500"
     },
     {
       title: "Massage Therapy",
-      image: "/src/assets/Massage Therapy.webp",
+      image: massage,
       price: "R450"
     }
   ];
 
   return (
+
     <div className="bg-black text-white min-h-screen">
 
       <Navbar />
@@ -36,12 +42,14 @@ function Services() {
         <div className="grid md:grid-cols-3 gap-8">
 
           {services.map((service, index) => (
+
             <ServiceCard
               key={index}
               title={service.title}
               image={service.image}
               price={service.price}
             />
+
           ))}
 
         </div>
@@ -51,6 +59,7 @@ function Services() {
       <Footer />
 
     </div>
+
   );
 }
 

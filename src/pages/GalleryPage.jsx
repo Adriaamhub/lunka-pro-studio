@@ -1,261 +1,221 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 /* Images */
-import nail1 from "../assets/gallery/nail6.jpg";
-import nail2 from "../assets/gallery/nail7.jpg";
-import makeup from "../assets/gallery/makeup.webp";
-import massage from "../assets/gallery/massage2.jpg";
-import spa from "../assets/gallery/spa.jpg";
-import beauty from "../assets/gallery/beaty.avif";
+import nail1 from "../assets/lunka/ln1.jpeg";
+import nail2 from "../assets/lunka/ln2.jpeg";
+import makeup from "../assets/lunka/MK.jpeg";
+import massage from "../assets/lunka/MASSGE 2.jpeg";
+import spa from "../assets/lunka/WhatsApp Image 2026-05-21 at 15.00.58.jpeg";
+import beauty from "../assets/lunka/WhatsApp Image 2026-05-21 at 15.00.59 (1).jpeg";
 
 function GalleryPage() {
 
-  const slides = [nail1, nail2, makeup, massage];
-
-  const [current, setCurrent] = useState(0);
-
-  /* Auto Slider */
-  useEffect(() => {
-    const slider = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 4000);
-
-    return () => clearInterval(slider);
-  }, []);
+  const gallery = [
+    {
+      image: nail1,
+      title: "Luxury Nails",
+      subtitle: "Elegant nail artistry",
+    },
+    {
+      image: nail2,
+      title: "Premium Designs",
+      subtitle: "Luxury nail perfection",
+    },
+    {
+      image: makeup,
+      title: "Makeup Studio",
+      subtitle: "Beauty & glamour",
+    },
+    {
+      image: massage,
+      title: "Massage Therapy",
+      subtitle: "Relaxation & wellness",
+    },
+    {
+      image: spa,
+      title: "Spa Experience",
+      subtitle: "Luxury self-care",
+    },
+    {
+      image: beauty,
+      title: "Beauty Lounge",
+      subtitle: "Premium beauty care",
+    },
+  ];
 
   return (
+
     <div className="bg-black text-white min-h-screen overflow-hidden">
 
       <Navbar />
 
-      {/* HERO */}
-      <section className="relative pt-40 pb-24 px-6">
+      {/* PREMIUM GALLERY */}
+      <section className="relative pt-40 pb-28 px-6">
 
-        {/* Glow Effects */}
-        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-purple-600 opacity-20 blur-[150px] rounded-full"></div>
+        {/* Background Glow */}
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-purple-600/20 blur-[150px] rounded-full"></div>
 
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-pink-500 opacity-20 blur-[150px] rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-pink-500/20 blur-[150px] rounded-full"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        {/* Grid Overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-          {/* LEFT CONTENT */}
+        <div className="relative z-10 max-w-7xl mx-auto">
+
+          {/* Heading */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -60 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
+            className="text-center mb-20"
           >
 
-            <p className="text-purple-400 uppercase tracking-[5px] text-sm mb-5">
-              Luxury Beauty Collection
+            <p className="text-purple-400 uppercase tracking-[6px] text-sm mb-5">
+              Luxury Collection
             </p>
 
-            <h1 className="text-5xl md:text-7xl font-black leading-tight">
-              Our Premium
-              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-300 text-transparent bg-clip-text">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight">
+
+              Beauty
+
+              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-300 bg-clip-text text-transparent">
                 {" "}Gallery
               </span>
+
             </h1>
 
-            <p className="mt-8 text-zinc-300 text-lg leading-relaxed max-w-xl">
-              Explore our luxurious beauty treatments,
-              elegant nail artistry, makeup perfection,
-              spa therapy, and wellness experiences.
-            </p>
-
-            {/* Side Cards */}
-            <div className="grid grid-cols-2 gap-5 mt-12">
-
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 hover:scale-105 transition-all duration-300">
-
-                <h2 className="text-4xl font-black text-purple-400">
-                  500+
-                </h2>
-
-                <p className="text-zinc-300 mt-2">
-                  Happy Clients
-                </p>
-
-              </div>
-
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 hover:scale-105 transition-all duration-300">
-
-                <h2 className="text-4xl font-black text-pink-400">
-                  5★
-                </h2>
-
-                <p className="text-zinc-300 mt-2">
-                  Luxury Experience
-                </p>
-
-              </div>
-
-            </div>
+            <div className="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mt-8"></div>
 
           </motion.div>
 
-          {/* RIGHT SLIDER */}
+          {/* Gallery Grid */}
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+            {gallery.map((item, index) => (
+
+              <motion.div
+                key={index}
+                initial={{
+                  opacity: 0,
+                  rotateY: 90,
+                  y: 80,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  rotateY: 0,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.9,
+                  delay: index * 0.15,
+                }}
+                viewport={{ once: true }}
+                whileHover={{
+                  scale: 1.03,
+                  rotateY: 4,
+                }}
+                className="group relative overflow-hidden rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.6)]"
+              >
+
+                {/* Glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+
+                {/* Image */}
+                <div className="relative overflow-hidden h-[520px]">
+
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center opacity-85 group-hover:scale-110 transition-all duration-700"
+                  />
+
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+
+                  {/* Blend Overlay */}
+                  <div className="absolute inset-0 bg-purple-500/10 mix-blend-overlay"></div>
+
+                  {/* Floating Border */}
+                  <div className="absolute inset-4 rounded-[30px] border border-white/10"></div>
+
+                  {/* Content */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 60 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: index * 0.2,
+                      duration: 0.8,
+                    }}
+                    viewport={{ once: true }}
+                    className="absolute bottom-0 left-0 right-0 p-8"
+                  >
+
+                    <p className="text-purple-400 uppercase tracking-[5px] text-sm mb-3">
+                      Lunka Pro Studio
+                    </p>
+
+                    <h2 className="text-4xl font-black text-white">
+                      {item.title}
+                    </h2>
+
+                    <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-4"></div>
+
+                    <p className="text-zinc-300 mt-5 text-lg">
+                      {item.subtitle}
+                    </p>
+
+                  </motion.div>
+
+                </div>
+
+              </motion.div>
+
+            ))}
+
+          </div>
+
+          {/* Bottom Luxury Banner */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="relative"
+            viewport={{ once: true }}
+            className="relative mt-24 overflow-hidden rounded-[45px] border border-white/10 bg-white/5 backdrop-blur-2xl p-14 text-center shadow-[0_20px_100px_rgba(0,0,0,0.7)]"
           >
 
-            <div className="relative overflow-hidden rounded-[40px] h-[650px] border border-white/10 shadow-2xl">
+            {/* Glow */}
+            <div className="absolute top-0 left-0 w-80 h-80 bg-purple-500/20 blur-[140px] rounded-full"></div>
 
-              <img
-                src={slides[current]}
-                alt="Beauty"
-                className="w-full h-full object-cover transition-all duration-700"
-              />
+            <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500/20 blur-[140px] rounded-full"></div>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div className="relative z-10">
 
-              {/* Floating Card */}
-              <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md border border-white/10 rounded-3xl p-6">
+              <p className="text-purple-400 uppercase tracking-[6px] text-sm mb-5">
+                Luxury Beauty
+              </p>
 
-                <h3 className="text-3xl font-bold text-white">
-                  Luxury Beauty Studio
-                </h3>
+              <h2 className="text-4xl md:text-6xl font-black leading-tight">
 
-                <p className="text-zinc-300 mt-3">
-                  Nails • Makeup • Spa • Massage • Wellness
-                </p>
+                Elegant Beauty
+                <br />
 
-              </div>
+                <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-purple-300 bg-clip-text text-transparent">
+                  Perfected
+                </span>
 
-            </div>
+              </h2>
 
-            {/* Dots */}
-            <div className="flex justify-center gap-3 mt-6">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrent(index)}
-                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                    current === index
-                      ? "bg-purple-500 scale-125"
-                      : "bg-zinc-700"
-                  }`}
-                ></button>
-              ))}
+              <p className="text-zinc-300 mt-8 text-lg max-w-3xl mx-auto leading-relaxed">
+                Discover premium beauty experiences,
+                luxury wellness, nail artistry,
+                makeup perfection, and unforgettable self-care.
+              </p>
+
             </div>
 
           </motion.div>
-
-        </div>
-
-      </section>
-
-      {/* IMAGE GRID */}
-      <section className="px-6 pb-24">
-
-        <div className="max-w-7xl mx-auto">
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {/* Card 1 */}
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              className="relative overflow-hidden rounded-[35px] group"
-            >
-
-              <img
-                src={nail1}
-                alt="Nails"
-                className="w-full h-[500px] object-cover"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-
-              <div className="absolute bottom-8 left-8">
-                <h2 className="text-3xl font-bold">
-                  Nail Artistry
-                </h2>
-
-                <p className="text-zinc-300 mt-2">
-                  Premium nail designs
-                </p>
-              </div>
-
-            </motion.div>
-
-            {/* Card 2 */}
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              className="relative overflow-hidden rounded-[35px] group"
-            >
-
-              <img
-                src={makeup}
-                alt="Makeup"
-                className="w-full h-[500px] object-cover"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-
-              <div className="absolute bottom-8 left-8">
-                <h2 className="text-3xl font-bold">
-                  Makeup Studio
-                </h2>
-
-                <p className="text-zinc-300 mt-2">
-                  Glamour & beauty perfection
-                </p>
-              </div>
-
-            </motion.div>
-
-            {/* Card 3 */}
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              className="relative overflow-hidden rounded-[35px] group"
-            >
-
-              <img
-                src={massage}
-                alt="Massage"
-                className="w-full h-[500px] object-cover"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-
-              <div className="absolute bottom-8 left-8">
-                <h2 className="text-3xl font-bold">
-                  Spa Therapy
-                </h2>
-
-                <p className="text-zinc-300 mt-2">
-                  Relaxation & wellness care
-                </p>
-              </div>
-
-            </motion.div>
-
-          </div>
-
-          {/* Bottom Gallery */}
-          <div className="grid md:grid-cols-2 gap-8 mt-8">
-
-            <motion.img
-              whileHover={{ scale: 1.02 }}
-              src={spa}
-              alt="Spa"
-              className="rounded-[35px] h-[400px] w-full object-cover"
-            />
-
-            <motion.img
-              whileHover={{ scale: 1.02 }}
-              src={beauty}
-              alt="Beauty"
-              className="rounded-[35px] h-[400px] w-full object-cover"
-            />
-
-          </div>
 
         </div>
 
@@ -264,6 +224,7 @@ function GalleryPage() {
       <Footer />
 
     </div>
+
   );
 }
 
